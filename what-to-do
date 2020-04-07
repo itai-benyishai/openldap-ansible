@@ -1,0 +1,3 @@
+need to configure openldap (domain name, password...), all i did till now is install
+configure hosts in ansible
+
