@@ -2,5 +2,3 @@
 
 - name: Install the openldap and required Packages for Ubuntu
   apt: name={{ openldap_pkgs }} state=present update_cache=yes
-  environment: env #??
-  when: ansible_os_family == 'Debian'
