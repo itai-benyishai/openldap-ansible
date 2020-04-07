@@ -1,0 +1,5 @@
+key_name: my_aws # my key i will create before hand
+region: us-east-2
+image: ami-08cec7c429219e339 # free tier ubuntu 16 image
+id: "new-ldap-server"
+sec_group: "{{ id }}-sec"

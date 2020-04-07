@@ -1,0 +1,25 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: False
+  become: yes
+  become_method: sudo
+  roles:
+      - provision-ec2
+
+- hosts: ldapserver
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+  vars:
+   ansible_ssh_private_key_file: "/home/ubuntu/.ssh/my_aws"
+  pre_tasks:
+   - name: 'install python'
+     raw: 'sudo apt-get -y install python'
+  tasks:
+   - name: Install prerequisites
+     apt:
+       name: ['apt-transport-https', 'ca-certificates', 'curl', 'gnupg2' ,'software-properties-common']
+       update_cache: yes
