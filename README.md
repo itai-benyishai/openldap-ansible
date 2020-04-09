@@ -47,23 +47,24 @@ openldap-ansible/
 - AWS IAM user 
 - 2 Ansible vault files:
 
+1. First ansible vault file named:
 `roles/provision-ec2/vars/main/aws-keys.yml`
 
-with AWS IAM user's keys: 
+The files content includes the AWS IAM user's keys: 
  
 `ec2_access_key: <access key>`
 
 `ec2_secret_key: <secret key>`
 
-and another ansible vault file:
-
+2. Second ansible vault file named:
 `roles/install-openldap/vars/main/ldap_password.yml`
 
-with the ldap password you want to configure
+the file's content includes the ldap password you want to configure
 
 `ldap_password: <desired-password>`
 
-that way these files are locked with a password and encrypted. 
+These ansible vault files are locked with a password and encrypted.
+Our password and key variables are safe this way. :)
 
 ## The playbook 
 
