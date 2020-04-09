@@ -1,0 +1,14 @@
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+replace: olcSuffix
+olcSuffix: dc={{ openldap_server_domain_name.split('.')[0] }},dc={{ openldap_server_domain_name.split('.')[1] }}
+
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+replace: olcRootDN
+olcRootDN: cn=admin,dc={{ openldap_server_domain_name.split('.')[0] }},dc={{ openldap_server_domain_name.split('.')[1] }}
+
+dn: olcDatabase={1}mdb,cn=config
+changetype: modify
+replace: olcRootPW
+olcRootPW:{{root_ldap_password.stdout}} 

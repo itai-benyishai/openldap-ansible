@@ -3,31 +3,22 @@
 - name: Install the openldap and required Packages for Ubuntu
   apt: name={{ openldap_pkgs }} state=present update_cache=yes
 
-- name: Delete the default slapd.d configuration directory
-  file: path=/etc/ldap/slapd.d state=absent
-
 - name: Configure the root password for ldap
   shell: slappasswd -s {{ ldap_password }} # var in ansible vault at vars/main/ldap_password.yml 
   register: root_ldap_password
 
-- name: Create a directory if it does not exist
-  file:
-    path: "/var/lib/ldap/{{openldap_server_domain_name}}"
-    state: directory
-    mode: '0755'
-    owner: openldap
-    group: openldap
-
-- name: Copy the slapd.conf configuration file
-  template: src=slapd.conf.j2 dest=/etc/ldap/slapd.conf
-  notify: 
-   - restart slapd
-
 - name: Copy the ldap.conf configuration file
   template: src=ldap.conf.j2 dest=/etc/ldap/ldap.conf
 
-- name: Copy the template for creating base dn
-  template: src=domain.ldif dest=/tmp
+- name: Copy the db.ldif file
+  template: src=db.ldif.j2 dest=/tmp/db.ldif
 
-- name: add the base domain
-  shell: ldapadd -x -D "cn=admin,dc={{ openldap_server_domain_name.split('.')[0] }},dc={{ openldap_server_domain_name.split('.')[1] }}" -w {{ ldap_password }} -f /tmp/domain.ldif 
+- name: Configure ldap server with ldapmodify
+  shell: ldapmodify -Y EXTERNAL  -H ldapi:/// -f /tmp/db.ldif
+
+- name: Copy the template base.ldif file
+  template: src=base.ldif.j2 dest=/tmp/base.ldif 
+
+- name: Build Directory structure
+  shell: ldapadd -x -w {{ ldap_password }} -D  "cn=admin,dc={{ openldap_server_domain_name.split('.')[0] }},dc={{ openldap_server_domain_name.split('.')[1] }}" -f /tmp/base.ldif
+

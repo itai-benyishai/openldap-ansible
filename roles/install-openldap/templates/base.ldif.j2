@@ -1,0 +1,18 @@
+dn: dc={{ openldap_server_domain_name.split('.')[0] }},dc={{ openldap_server_domain_name.split('.')[1] }}
+dc: {{ openldap_server_domain_name.split('.')[0] }}
+objectClass: top
+objectClass: domain
+
+dn: cn=admin,dc={{ openldap_server_domain_name.split('.')[0] }},dc={{ openldap_server_domain_name.split('.')[1] }}
+objectClass: organizationalRole
+cn: admin
+description: LDAP Admin
+
+dn: ou=Users,dc={{ openldap_server_domain_name.split('.')[0] }},dc={{ openldap_server_domain_name.split('.')[1] }}
+objectClass: organizationalUnit
+ou: Users
+
+dn: ou=Groups,dc={{ openldap_server_domain_name.split('.')[0] }},dc={{ openldap_server_domain_name.split('.')[1] }}
+objectClass: organizationalUnit
+ou: Groups
+
