@@ -1,8 +1,8 @@
 # openldap-ansible
+An ansible playbook that uses two roles
 
 ## The roles
 
-An ansible playbook that uses two roles:
 1. provision-ec2
    spins up an ec2 instance on AWS (Free tier Ubuntu 18.04)
    
@@ -42,7 +42,7 @@ openldap-ansible/
                 ├── aws-keys.yml
                 └── main.yml
 
-## Pre-requisits
+## Prerequisites
 - Ansible
 - AWS IAM user 
 - 2 Ansible vault files:
@@ -50,7 +50,7 @@ openldap-ansible/
 1. First ansible vault file named:
 `roles/provision-ec2/vars/main/aws-keys.yml`
 
-The files content includes the AWS IAM user's keys: 
+The file's content includes the AWS IAM user's keys: 
  
 `ec2_access_key: <access key>`
 
@@ -59,7 +59,7 @@ The files content includes the AWS IAM user's keys:
 2. Second ansible vault file named:
 `roles/install-openldap/vars/main/ldap_password.yml`
 
-the file's content includes the ldap password you want to configure
+The file's content includes the ldap password you want to configure
 
 `ldap_password: <desired-password>`
 
