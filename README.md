@@ -20,29 +20,53 @@ An ansible playbook that uses two roles
 ## File structure
 
 openldap-ansible/
+
 ├── hosts
+
 ├── playbook.yml
+
 └── roles
+
     ├── install-openldap
+    
     │   ├── handlers
+    
     │   │   └── main.yml
+    
     │   ├── tasks
+    
     │   │   └── main.yml
+    
     │   ├── templates
+    
     │   │   ├── base.ldif.j2
+    
     │   │   ├── db.ldif.j2
+    
     │   │   └── ldap.conf.j2
+    
     │   └── vars
+    
     │       └── main
+    
     │           ├── ldap_password.yml
+    
     │           └── vars.yml
+    
     └── provision-ec2
+    
         ├── tasks
+        
         │   └── main.yml
+        
         └── vars
+        
             └── main
+            
                 ├── aws-keys.yml
+                
                 └── main.yml
+                
 
 ## Prerequisites
 - Ansible
