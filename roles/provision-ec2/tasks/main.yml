@@ -43,8 +43,10 @@
         - proto: tcp
           ports:
             - 22
+            - 80
+            - 389
           cidr_ip: "{{ ipify_public_ip }}/32" # my ip
-          rule_desc: allow inbound traffic from me on ssh 
+          rule_desc: allow inbound traffic from me on ss, http and ldap
     register: result_sec_group
 
   - name: Provision instance
