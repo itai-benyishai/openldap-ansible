@@ -16,6 +16,7 @@ An ansible playbook that uses two roles:
 
 
 ## File structure
+
 openldap-ansible/
 ├── hosts
 ├── playbook.yml
@@ -41,28 +42,33 @@ openldap-ansible/
                 ├── aws-keys.yml
                 └── main.yml
 
-
 ## Pre-requisits
 - Ansible
 - AWS IAM user 
 - 2 Ansible vault files:
+
 `roles/provision-ec2/vars/main/aws-keys.yml`
- with AWS IAM user's keys: 
- ` 
-ec2_access_key: <access key> 
-                                     
-ec2_secret_key: <secret key>
-`
+
+with AWS IAM user's keys: 
+ 
+`ec2_access_key: <access key>`
+
+`ec2_secret_key: <secret key>`
+
 and another ansible vault file:
+
 `roles/install-openldap/vars/main/ldap_password.yml`
+
 with the ldap password you want to configure
+
 `ldap_password: <desired-password>`
 
 that way these files are locked with a password and encrypted. 
 
 ## The playbook 
 
-to run the playbook: 
+To run the playbook: 
+
 `ansible-playbook playbook.yml --ask-vault-pass -i hosts`
 
 
