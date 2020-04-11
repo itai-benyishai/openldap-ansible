@@ -82,7 +82,7 @@ To run the playbook:
 `ansible-playbook playbook.yml --ask-vault-pass -i hosts`
 
 
-## itai_ldap Ansible Module
+## itai_ldap Ansible Module Documentation
 
 ``` 
 module: itai_ldap
@@ -160,10 +160,10 @@ options:
         description:
             - The new user's homeDirectory attribute value.
               
-"""
 
 
-EXAMPLES = """
+
+EXAMPLES
 # Search For a User.
 - itai_ldap:
     action: "search"
@@ -184,7 +184,7 @@ EXAMPLES = """
     gidNumber: "5001"
     
     An Example playbook exists in the directory.
-"""
+
 
 
 
