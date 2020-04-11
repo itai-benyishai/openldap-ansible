@@ -84,7 +84,7 @@ To run the playbook:
 
 ## itai_ldap Ansible Module
 
-``` bash
+``` 
 module: itai_ldap
 short_description: Add or search ldap users.
 description:
