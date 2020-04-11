@@ -1,0 +1,32 @@
+- hosts: ldapserver
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  vars:
+   ansible_ssh_private_key_file: "/Users/itaibenyishai/.ssh/my_aws"
+
+  tasks:
+
+  - name: Search for adam user in openldap server
+    itai_ldap:
+      action: "search"
+      ldap_base: "dc=itaibenyishai,dc=com"
+      bind_dn: "cn=admin,dc=itaibenyishai,dc=com"
+      bind_pw: "abc"
+      search_user: "ari"
+    register: user
+
+  - name: output searched user
+    debug: msg="{{user}}"
+
+  - name: Add New user named asaf
+    itai_ldap:
+      action: "add_user"
+      bind_dn: "cn=admin,dc=itaibenyishai,dc=com"
+      bind_pw: "abc"
+      user_dn: "uid=asaf,ou=users,dc=itaibenyishai,dc=com"
+      user_pw: "{{secret_password}}"
+      homeDirectory: /home/asaf
+      uidNumber: "5001"
+      gidNumber: "5001"
+    

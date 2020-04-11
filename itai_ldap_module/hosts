@@ -1,0 +1,5 @@
+[ldapserver]
+18.220.184.129
+
+[ldapserver:vars]
+ansible_python_interpreter=/usr/bin/python3
