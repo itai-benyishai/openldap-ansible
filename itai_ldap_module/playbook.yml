@@ -1,3 +1,5 @@
+---
+# An Example use case for the itai_ldap module
 - hosts: ldapserver
   remote_user: ubuntu
   become: yes
@@ -12,7 +14,7 @@
       action: "search"
       ldap_base: "dc=itaibenyishai,dc=com"
       bind_dn: "cn=admin,dc=itaibenyishai,dc=com"
-      bind_pw: "abc"
+      bind_pw: "abc" # For the example. Password should be saved as a var in an ansible vault file.
       search_user: "ari"
     register: user
 
