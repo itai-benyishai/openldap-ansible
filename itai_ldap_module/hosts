@@ -1,5 +1,5 @@
 [ldapserver]
-18.220.184.129
+<insert ip>
 
 [ldapserver:vars]
 ansible_python_interpreter=/usr/bin/python3
