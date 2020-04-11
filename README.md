@@ -13,7 +13,7 @@ An Ansible project with 2 directories.
 
    - Spins up an ec2 instance on AWS (Free tier Ubuntu 18.04)
    
-   - Configures ssh keys and a security group with ip filtering, allowing exclusive inbound ssh traffic on port 22.
+   - Configures ssh keys and a security group with ip filtering, allowing exclusive inbound traffic on ports 22,80,339.
 
 2. **install-openldap**
 
